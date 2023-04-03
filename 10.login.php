@@ -21,8 +21,6 @@ $username = $_POST['username'];
 $phone = $_POST['phone'];
 $pw = $_POST['pw'];
 
-// checkRequiredFields($username, $phone, $pw); 
-
   // validacija dali se prazni site inputi
     if(empty($username) || empty($phone) || empty($pw))
     {
@@ -30,18 +28,15 @@ $pw = $_POST['pw'];
       die();
     }
   
-
-//
+// validation username
 if(strlen($username) < 4){
-   // global $action; --> za pristap od sekoj fail da imam bilo kade
-
     header("Location: 10.index.php?status=error&reason=minusernamelength&action=$action");
     die();
 }
 
+// validation pw
 if(strlen($pw) < 6){
-header("Location: 10.index.php?status=error&reason=minlengthPW&oldusername=$username&action=$action"); // &oldusername=$username --> go vraka staroto korisnicko ime t.e. username
-// za da koga ke go napisam korektno imeto i pw pomal da go zacuva imeto ! 
+header("Location: 10.index.php?status=error&reason=minlengthPW&oldusername=$username&action=$action");
 die();
 }
 
@@ -50,30 +45,27 @@ die();
 
 $allusers = trim(file_get_contents("10users.txt"));
 $allusers = explode(PHP_EOL, $allusers);
-echo "<pre>"; print_r($allusers); // gi lista site users od failot 10users.txt vo array // print_r(array) --> e za array 
+echo "<pre>"; print_r($allusers); // gi lista site users od failot 10users.txt vo array
 
-$currentUser = "$username|$phone|$pw"; echo $currentUser . PHP_EOL . "<hr>"; // ova === so txt failot !!!  vaka gi pecati site 
+$currentUser = "$username|$phone|$pw"; echo $currentUser . PHP_EOL . "<hr>"; // ova === so txt failot !
 
 $loggedIn = false;
-
 foreach($allusers as $listUsers)
 {
-    if($currentUser === $listUsers) // dali userot sto se logira e == na tojo so go ima veke u failot ili vo baza
+    if($currentUser === $listUsers) // dali userot sto se logira e == na toj so go ima veke u failot ili vo baza
     {
         $loggedIn = true;
-        break; // za da ne gi pominuva drugite // kodot pobrzo se izvrsuva ! 
+        break; // za da ne gi pominuva drugite // kodot pobrzo se izvrsuva  
     }
 }
-// 10.3.successfullyLogged.php
+
 // successfullyLogged
 if($loggedIn){
     header("Location: 10.3.successfullyLogged.php?status=successfullyLogged"); 
-    // ?status=successfullyLogged // VAZNO ! NO ova se proveruva vo 110.1.register.php 
-  
+    die();  
 } else {
-    header("Location: 10.index.php?status=error&reason=notfound"); 
-// ?status=error&reason=notfound --> ova go dava na 10.1.register.php//  NO proverka pravam vo 10.1.register.php dali e setiran
-
+    header("Location: 10.index.php?status=error&reason=notfound");
+    die();
 }
 
 ?>
