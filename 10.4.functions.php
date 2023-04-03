@@ -2,22 +2,24 @@
 
   // $_SERVER['REQUEST_METHOD']
   // f-ja za da ne mi dozvoluva da odam preku url na stranicitte t.e so GET // me vraka nazat 
-  function chechValidRequest($reqmethod){
+  function chechValidRequest($reqmethod)
+  {
     if($reqmethod != "POST"){
       header("Location: 10.index.php");
-      //die();
+      die();
   }
   }
 
 
 
-function getOldusername($oldusername){
+function getOldusername($oldusername)
+{
     if(isset($oldusername)){
         return $oldusername;
     }
-
     return ''; 
   } 
+
 ?>
 
 
