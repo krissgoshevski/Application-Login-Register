@@ -80,11 +80,6 @@
 
     </form>
     </div> <br> 
-    <!--   <input type="name" name="username" placeholder="enter your username..." id="name" value="< ? php echo $_GET ['oldusername' ] ? >" /> <br>   -->
-    <!-- &oldusername=$username // value="< ?php echo getOldusername($_GET['oldusername']) ? >" // za da koga ke go napisam korektno imeto i pw pomal da go zacuva imeto !  -->
-    <!-- na inputot username mu davam value toa sto e ostanato prethodno  -->
-    <!-- value="hello" // defaultna vrednosta na inputot na UI se gleda -->
-
 
     <div class="secondform">
     <h2>Register form</h2>
