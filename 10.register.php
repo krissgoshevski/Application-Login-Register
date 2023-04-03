@@ -9,7 +9,6 @@
 <body>
 <form method="POST" action="10.3.successfullyLogged.php"> 
 </form>
-    
 </body>
 </html>
 
@@ -25,7 +24,6 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $pw = $_POST['pw'];
 
-// checkRequiredFields($username, $phone, $pw); 
 
   // validacija dali se prazni site inputi
     if(empty($username) || empty($email) || empty($pw))
@@ -42,11 +40,10 @@ if(strlen($username) < 4){
 }
 
 if(strlen($pw) < 6){
-header("Location: 10.index.php?status=error&reason=minlengthPW&oldusername=$username&action=$action"); // &oldusername=$username --> go vraka staroto korisnicko ime t.e. username
+header("Location: 10.index.php?status=error&reason=minlengthPW&oldusername=$username&action=$action"); 
 // za da koga ke go napisam korektno imeto i pw pomal da go zacuva imeto ! 
 die();
 }
 
-// za doma checkUsernameExists($username); 
-// ako posto iveke korisnik so toa korisnicko ime da vrati poraka username taken ! 
+
 ?>
